@@ -29,9 +29,30 @@ Features
 - lookup can be done with both id and slug
 
 
-App structure (Product User)
+### App structure (Product App)
 products/
 --models # for creating a product
 -- serializers.py # productserializer with validation
 -- views.py # DRF generic views for CRUD
 -- urls.py #Routes for user endpoints
+
+
+## Inventory Management
+The inventory app handles stock management for each product.
+Every time stock comes in or goes out, a transaction is recorded, and the product’s quantity is updated automatically.
+
+Features
+- Records Stock In and Stock Out transactions
+- Links each transaction to a product and a  user (who performed the action)
+- Automatically updates product stock levels via Django signals
+- Supports optional notes for each transaction
+- Maintains a transaction history for audit purposes
+
+
+### App structure (Inventory App)
+inventory/
+-- models.py        # InventoryTransaction model
+-- signals.py       # Updates product stock on transaction creation
+-- serializers.py   # InventoryTransactionSerializer with validation
+-- views.py         # DRF generic views for create/list
+-- urls.py          # Routes for inventory endpoints
