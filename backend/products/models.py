@@ -15,7 +15,7 @@ class Product(models.Model):
     barcode = models.CharField(max_length=100, unique=True)
     category = models.CharField(max_length=50, choices=CATEGORY_OPTIONS)
     description = models.TextField(blank=True, null=True)
-    price =  models.DecimalField(max_digits=10, decimal_places=2),
+    price =  models.DecimalField(max_digits=10, decimal_places=2)
     stock_quantity =  models.PositiveIntegerField(default=0)
     slug = models.SlugField(unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
